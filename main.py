@@ -5,7 +5,7 @@ import time
 start = time.time()
 
 instance = 'prova.txt'
-visualize_gannt = True
+visualize_gantt = True
 save = True
 verbose = True
 parameters = {'alpha' : 1, 
@@ -28,7 +28,7 @@ end = time.time()
 total_time = end - start
 print("\nTime needed to find solution: "+ str(total_time))
 
-if visualize_gannt:   # Print gannt 
+if visualize_gantt:   # Print gantt 
     _, schedule = problem.objective_function(soluzione[0])
-    results = problem.get_gannt(schedule)
+    results = problem.get_gantt(schedule)
     problem.visualize(results, save)

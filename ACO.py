@@ -1,6 +1,6 @@
 import json
 from statistics import mean
-from JSSP import *
+from OSSP import *
 
 class ACO:
     

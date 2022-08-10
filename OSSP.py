@@ -132,7 +132,7 @@ class JSSP_problem:
         return len(machine_schedule) - index - 1
 
 
-    def get_gannt(self, solution):
+    def get_gantt(self, solution):
         '''
         Create a list of dict that represent the solution scheduling.
         The list contains a dict for each task.
@@ -144,9 +144,9 @@ class JSSP_problem:
             - Finish time of execution
         
         returns:
-            list of dict used to graphically visualize the gannt.
+            list of dict used to graphically visualize the gantt.
         '''
-        gannt_data = [] #machine list of dict
+        gantt_data = [] #machine list of dict
         for i in range(self.num_machines):
             schedule = {}
             machine_num = i
@@ -160,24 +160,24 @@ class JSSP_problem:
                     time += 1
                 else:
                     schedule = self.get_dict(job_num, machine_num, start, duration)
-                    gannt_data.append(schedule)
+                    gantt_data.append(schedule)
                     start = time
                     time += 1
                     job_num = solution[i][j]
                     duration = 1
 
             schedule = self.get_dict(job_num, machine_num, start, duration) #Do it because the last control cannot be done (out of bounds with index)
-            gannt_data.append(schedule)
+            gantt_data.append(schedule)
         
-        gannt_data = self.remove_null_execution(gannt_data)
+        gantt_data = self.remove_null_execution(gantt_data)
 
-        return gannt_data
+        return gantt_data
 
     
     def get_dict(self, job_num, machine_num, start, duration):
         '''
         returns:
-            dict containing scheduling info for gannt.
+            dict containing scheduling info for gantt.
         '''
         return ({'Job': 'job_'+str(job_num), 'Machine': 'machine_'+str(machine_num), \
                         'Start': start, 'Duration': duration, 'Finish': start+duration})
@@ -186,7 +186,7 @@ class JSSP_problem:
     def remove_null_execution(self, scheduling):
         '''
         returns:
-            original gannt data less the null execution.
+            original gantt data less the null execution.
         '''
         new_scheduling = []
         for sched in scheduling:
@@ -200,7 +200,7 @@ class JSSP_problem:
 
     def visualize(self, results, save=False):
         '''
-        Gannt graphically visualization.
+        Gantt graphically visualization.
         '''
         schedule = pd.DataFrame(results)
         JOBS = sorted(list(schedule['Job'].unique()))
@@ -243,5 +243,5 @@ class JSSP_problem:
         fig.tight_layout()
         plt.plot()
         if save:
-            plt.savefig('results/execution_gannt.png')
+            plt.savefig('results/execution_gantt.png')
         plt.show()
