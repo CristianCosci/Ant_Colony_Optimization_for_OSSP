@@ -4,21 +4,21 @@ import time
 # Grab Currrent Time Before Running the Code
 start = time.time()
 
-instance = 'prova.txt'
+instance = 'ta44_1.txt'
 visualize_gantt = True
 save = True
 verbose = True
 parameters = {'alpha' : 1, 
-                'beta' : 1, 
-                'rho' : 0.1, 
+                'beta' : 1.1, 
+                'rho' : 0.05, 
                 'tau': 0.5, 
-                'n_ants' : 20, 
+                'n_ants' : 10, 
                 'num_gen' : 200}
 
 problem = JSSP_problem.load_instance(instance)
 a = ACO(problem, parameters, verbose, save)
 
-soluzione = a.run()
+soluzione = a.run(seed=42)
 print("migliore soluzione:", soluzione)
 
 # Grab Currrent Time After Running the Code

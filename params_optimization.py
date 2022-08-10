@@ -22,27 +22,24 @@ The script will find the best combination of values for the parameters that allo
     - num_gen
 '''
 
-parameters_options = {'alpha' : [1, 1.1, 0.9], 'beta' : [1, 1.1, 0.9], 'rho' : [0.1, 0.01, 0.001], \
-                        'tau': [0.5], 'n_ants' : [10, 20, 50], 'num_gen' : [50, 100, 200]}
+parameters_options = {'alpha' : [1, 1.1, 0.9], 'beta' : [1, 1.1, 0.9], 'rho' : [0.1, 0.05, 0.001], \
+                        'tau': [0.5], 'n_ants' : [20, 10, 50], 'num_gen' : [100, 50, 200]}
 
 keys, values = zip(*parameters_options.items())
 parameters_combinations = [dict(zip(keys, v)) for v in itertools.product(*values)]
 print(parameters_combinations)
 
 lower_bound = 193
-instance = 'ta441.txt'
+instance = 'ta44_1.txt'
 problem = JSSP_problem.load_instance(instance)
 
 
 best_cost = 1e300 #large number
 best_parameters_combination = {}
 for parameters in tqdm(parameters_combinations):
-    a = ACO(problem, ALPHA=parameters['alpha'], BETA=parameters['beta'], \
-        rho=parameters['rho'], tau0=parameters['tau'], \
-        n_ants=parameters['n_ants'], num_gen=parameters['num_gen'],
-        verbose=False)
+    a = ACO(problem, parameters)
     
-    soluzione = a.run()
+    soluzione = a.run(seed=42)
 
     if soluzione[1] <= best_cost:
         print(soluzione[1])

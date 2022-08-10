@@ -44,8 +44,7 @@ class ACO:
                 {cycle : [Fastest, Mean, Longest], ...}
         """
         results_control = {}
-        if seed != 0:
-            np.random.seed(seed)
+        np.random.seed(seed)
         self.initialize()
         for gen in range(1,self.num_gen+1):
 

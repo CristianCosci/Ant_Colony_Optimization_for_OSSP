@@ -24,7 +24,7 @@ Activate venv to install project requirements
 source ACO_project/bin/activate
 ```
 
-Move to project dit and Install requiremenst
+Move to project dir and Install requiremenst
 ```sh
 pip install -r requirements.txt
 ```
@@ -54,7 +54,7 @@ To make it easier to evaluate the results of the optimization algorithm, it is a
 <hr>
 
 To make the operation of the code easier to interpret, everything is already set up to execute and solve an example instance with 4 machines and 4 jobs. <br> 
-To start the program it is therefore sufficient to start `main.py` script
+To start the program it is therefore sufficient to start `main.py` script with:
 ```sh
 python3.8 main.py
 ```
