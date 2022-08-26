@@ -1,0 +1,2 @@
+stampare eventuali plot utilizzando il json
+fare ulteriori prove

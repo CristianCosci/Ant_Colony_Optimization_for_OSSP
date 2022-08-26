@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 
 
-class JSSP_problem:
+class OSSP_problem:
 
     def __init__(self, instance):
         self.data = instance
@@ -43,7 +43,7 @@ class JSSP_problem:
         if verbose:
             print(instance)
 
-        return JSSP_problem(instance)
+        return OSSP_problem(instance)
 
 
     def get_dim(self):

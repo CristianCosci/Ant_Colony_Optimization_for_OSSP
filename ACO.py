@@ -1,6 +1,7 @@
 import json
 from statistics import mean
 from OSSP import *
+from tqdm import tqdm
 
 class ACO:
     
@@ -12,8 +13,8 @@ class ACO:
         self.tau0 = parameters['tau']           #Initial value for pheromone
         self.n_ants = parameters['n_ants']      #Number of ants walking in a cycle
         self.num_gen = parameters['num_gen']    #Number of cycle
-        self.w_ib=self.rho * 2/3                #Reward to iteration best -> exploration
-        self.w_bs=self.rho * 1/3                #Reward to best so far -> exploitation
+        self.w_ib=self.rho * parameters['w_ib'] #Reward to iteration best -> exploration
+        self.w_bs=self.rho * parameters['w_bs'] #Reward to best so far -> exploitation
         self.n_tasks = problem.get_dim()
         self.verbose = verbose
         self.save = save
@@ -46,7 +47,7 @@ class ACO:
         results_control = {}
         np.random.seed(seed)
         self.initialize()
-        for gen in range(1,self.num_gen+1):
+        for gen in tqdm(range(1,self.num_gen+1)):
 
             this_cycle_times = [] #
 
@@ -117,7 +118,7 @@ class ACO:
         self.phero = (1-self.rho)*self.phero
 
 
-    def evaluate_solutions(self,gen):
+    def evaluate_solutions(self, gen):
         '''
         Evaluate solution, find the iteration best and if necessary replace the best so far.
         '''
