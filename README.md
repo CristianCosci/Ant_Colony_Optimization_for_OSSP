@@ -39,7 +39,7 @@ The project consists of 3 main files:
 - `ACO.py` $\rightarrow$ file where the ACO optimization algorithm is implemented
 - `OSSP.py` $\rightarrow$ file where the problem representation is implemented
 
-Consequently, the file to run to start the program is `main.py`. Obviously all the files are duly commented and it is possible to easily understand how they work. However, for any clarification I am available.
+Consequently, the file to run to start the program is `main.py`. Obviously all the files are duly commented and it is possible to easily understand how they work. However, for any clarification open a discussion and i will help you.
 
 The various instances for the OSSP issue are available in the `test_instances` folder. <br>
 In the `utils` folder instead there is a script that allows you to create ready-to-run instances by taking them from sites like [taillard istances](http://mistic.heig-vd.ch/taillard/problemes.dir/ordonnancement.dir/ordonnancement.html). <br>
@@ -47,12 +47,33 @@ It is also possible to use instances from other websites (see the description of
 
 In the main directory there is also a file called `params_optimization.py` which allows to find the optimal parameters (which allow to obtain the optimal solution) for a given instance.
 
+<hr>
+
+### **Local Search**
+In optimization problems such as OSSP, JSSP, TSP, NPP and so on, **it is customary to perform local optimization after the main optimization algorithm**. <br>
+The main local optimization algorithm used in this situations is [local search](https://en.wikipedia.org/wiki/Local_search_ (optimization)). <br>
+In this case i try to update the solution using a version of **local search** called: **Iterated Local Search** which uses local search in its 'best improvement' version. <br>
+In case you don't get the lower bound right away using ACO, you can improve your results with this additional optimization algorithm. <br>
+You can select the number of generations of the local search in a specific variable (`num_tries`) in the` main.py` file.
+
+<hr>
+
+### **Plot ACO results**
+To **view solution improvements as generations go** by, you can print a chart showing the `minimum, average, and maximum` solution costs for each generation. <br>
+To see the plot, set the appropriate variable `plot_cycles` to `True` in `main.py`.
+
+<img src="results/ACO_cycles_results.png" width="100%" />
+
+<hr>
+
+### **Visualize Gantt Chart**
 To make it easier to evaluate the results of the optimization algorithm, it is also possible to graphically view the **gantt chart** of the found scheduling.
 
 <img src="results/execution_gantt.png" width="100%" />
 
 <hr>
 
+### **Launch execution**
 To make the operation of the code easier to interpret, everything is already set up to execute and solve an example instance with 4 machines and 4 jobs. <br> 
 To start the program it is therefore sufficient to start `main.py` script with:
 ```sh
