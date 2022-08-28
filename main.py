@@ -30,7 +30,7 @@ print("Best Solution ever found using ACO: {} {}".format(solution_schedule, solu
 
 end = time.time() # Grab Currrent Time After Running the Code
 total_time = end - start # Subtract Start Time from The End Time
-print("\nTime needed to find solution: "+ str(total_time))
+print("\nTime needed to find solution with ACO: "+ str(total_time))
 print()
 
 
@@ -59,8 +59,10 @@ if plot_cycles:
     plt.title("ACO generations results")
     plt.xlabel("num_gen")
     plt.ylabel("Solution Cost")
+    
+    if save:
+        plt.savefig('results/ACO_cycles_results.png')
 
-    plt.savefig('results/ACO_cycles_results.png')
     plt.show()
 
 
@@ -68,13 +70,17 @@ if plot_cycles:
 #########################################################
 #               LOCAL SEARCH
 if do_local_search: # Do local search on solution returned by ACO
+    start = time.time()
     print('Start solution optimization using LOCAL SEARCH')
     num_swap = len(solution_schedule) // 5   # Swap 20% of the solution
     x, fx = iterated_local_search(problem, num_tries=num_tries, num_swap=num_swap, init_sol=solution_schedule)
     if fx < solution_cost:   # If local search improve solution
         solution_schedule = x
         solution_cost = fx
-
+    
+    end = time.time() # Grab Currrent Time After Running the Code
+    total_time = end - start # Subtract Start Time from The End Time
+    print("\nTime needed to improve solution with Local Search: "+ str(total_time))
     print("Best Solution ever found using Local Search on ACO results: {} {}".format(x, fx))
 
 
