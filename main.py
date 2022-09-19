@@ -6,12 +6,12 @@ import time
 start = time.time()
 
 instance = 'ta44_1.txt'
-visualize_gantt = True
+visualize_gantt = False
 plot_cycles = True
 save = True
 verbose = True
 do_local_search = True
-num_tries = 35 # Number of tries for iterated local search algorithm
+num_tries = 10 # Number of tries for iterated local search algorithm (orifin 35)
 
 parameters = {'alpha' : 1, 
                 'beta' : 1,
@@ -20,12 +20,12 @@ parameters = {'alpha' : 1,
                 'w_ib' : 3/5,
                 'w_bs' : 1/5,
                 'n_ants' : 10,
-                'num_gen' : 300}
+                'num_gen' : 400}
 
 problem = OSSP_problem.load_instance(instance)
 a = ACO(problem, parameters, verbose, save)
 
-solution_schedule, solution_cost = a.run(seed=42)
+solution_schedule, solution_cost = a.run(seed=777)
 print("Best Solution ever found using ACO: {} {}".format(solution_schedule, solution_cost))
 
 end = time.time() # Grab Currrent Time After Running the Code

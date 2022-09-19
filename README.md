@@ -62,7 +62,7 @@ You can select the number of generations of the local search in a specific varia
 To **view solution improvements as generations go** by, you can print a chart showing the `minimum, average, and maximum` solution costs for each generation. <br>
 To see the plot, set the appropriate variable `plot_cycles` to `True` in `main.py`.
 
-<img src="results/ACO_cycles_results.png" width="100%" />
+<img src="results/ACO_cycles_results.png" width="80%" />
 
 <hr>
 

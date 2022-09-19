@@ -6,7 +6,7 @@ To create an instance copy and paste the processing time in tasks.txt file and t
 The script would create for you a new .txt file named as num_machines * num_jobs and a version (to change version change variable file_name).
 '''
 
-file_name = 1
+file_name = 2
 machines_file_name = 'machines.txt'
 tasks_file_name = 'tasks.txt'
 
