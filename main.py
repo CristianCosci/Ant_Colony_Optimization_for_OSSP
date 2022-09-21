@@ -6,7 +6,7 @@ import time
 start = time.time()
 
 instance = 'ta44_1.txt'
-visualize_gantt = False
+visualize_gantt = True
 plot_cycles = True
 save = True
 verbose = True

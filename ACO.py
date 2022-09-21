@@ -55,7 +55,7 @@ class ACO:
                 self.sol[ant_num] = self.generate_solution()
 
                 path_time, _ = self.problem.objective_function(self.sol[ant_num])
-                this_cycle_times.append(path_time)#
+                this_cycle_times.append(path_time)
 
             self.evaluate_solutions(gen)
             self.update_pheromone()

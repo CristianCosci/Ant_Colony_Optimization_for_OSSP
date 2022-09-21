@@ -80,7 +80,7 @@ class OSSP_problem:
             
             task_executed = False
             while not task_executed:
-                job_already_executing_list = [] #list where is saved if the task in executing or not for each machine
+                job_already_executing_list = [] #list where is saved: if the task is executing or not for each machine
                 for other_machine in range(self.num_machines):
                     if this_job in schedule[other_machine]: #control if the job is in the schedule of another machine
                         job_already_executing_list.append(True) #put a priori that is executing, next control if i really executing
